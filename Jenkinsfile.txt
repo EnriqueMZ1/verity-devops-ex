@@ -14,7 +14,19 @@ pipeline {
             steps {
                 sh 'mvn pmd:pmd'
             }
+            post {
+              always {
+                recordIssues enabledForFailture: true, tool: pmdParser(pattern: '**/targe/pmd.xml')
+              }
+            }
         }
       //Code ends for stage PMD
+		//Code starts for stage Compile
+		stage('Compile') {
+            steps {
+                sh 'mvn compile'
+            }
+        }
+		//Code ends for stage Compile      
     }
 }
