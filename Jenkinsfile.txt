@@ -16,7 +16,7 @@ pipeline {
             }
             post {
               always {
-                recordIssues enabledForFailture: true, tool: pmdParser(pattern: '**/targe/pmd.xml')
+                recordIssues enabledForFailure: true, tool: pmdParser(pattern: '**/target/pmd.xml')
               }
             }
         }
